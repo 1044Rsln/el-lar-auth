@@ -39,6 +39,7 @@ class TaskController extends Controller {
     }
 
     function edit() {
+        
         return view('tasks.edit');
     }
 
@@ -47,7 +48,7 @@ class TaskController extends Controller {
     }
 
     function destroy(Task $task, Request $request) {
-         $this->authorize('destroy', $task);
+    //$this->authorize('destroy', $task);
         $task->delete();
         return redirect(route('tasks.index'));
     }

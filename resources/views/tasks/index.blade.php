@@ -39,6 +39,14 @@
                                         </button>
                                     </form>
                                 </td>
+                                <td>
+                                    <form action="{{ url(route('tasks.edit',['task'=>$task->id])) }}" method="post">
+                                        {{csrf_field()}}
+                                        {{method_field('get')}}
+                                        <button class="btn btn-default"><i class="fa fa-edit"></i>Редактировать
+                                        </button>
+                                    </form>
+                                </td>
                             </tr>
                             @endforeach
                         </tbody>
