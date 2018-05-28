@@ -38,9 +38,11 @@ class TaskController extends Controller {
         return view('tasks.show');
     }
 
-    function edit() {
+    function edit(Task $task, Request $request) {
         
-        return view('tasks.edit');
+        return view('tasks.edit', [
+        'task' => $task,
+    ]);
     }
 
     function update() {
