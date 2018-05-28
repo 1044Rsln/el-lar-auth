@@ -38,14 +38,17 @@ class TaskController extends Controller {
         return view('tasks.show');
     }
 
-    function edit(Task $task, Request $request) {
+    function edit(Task $task) {
         
         return view('tasks.edit', [
         'task' => $task,
     ]);
     }
 
-    function update() {
+    function update(Task $task, Request $request) {
+        $task = Task::find($request->id);
+        $task->name = $request->name;
+        $task->save();
         return redirect();
     }
 
