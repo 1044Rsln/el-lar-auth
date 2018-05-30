@@ -26,8 +26,7 @@ class TaskController extends Controller {
 
     function index(Request $request) {
         $tasks = $request->user()->tasks()->get();
-        
-        return view('tasks.index',['tasks'=>$tasks]);
+        return view('tasks.index', ['tasks' => $tasks]);
     }
 
     function create() {
@@ -39,22 +38,23 @@ class TaskController extends Controller {
     }
 
     function edit(Task $task) {
-        
         return view('tasks.edit', [
-        'task' => $task,
-    ]);
+            'task' => $task,
+        ]);
     }
 
     function update(Task $task, Request $request) {
+        //var_dump($request);
         $task = Task::find($request->id);
         $task->name = $request->name;
         $task->save();
         return redirect();
     }
 
-    function destroy(Task $task, Request $request) {
-    //$this->authorize('destroy', $task);
-        $task->delete();
+    function destroy($id) {
+        //$this->authorize('destroy', $task);
+        $this->authorize('destroy', $this->tasks->find($id));
+        $this->tasks->destroy($id);
         return redirect(route('tasks.index'));
     }
 

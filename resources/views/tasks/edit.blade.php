@@ -11,7 +11,7 @@
                 <div class="panel-body">
                     @if(!empty($task))
                     <!-- Форма новой задачи -->
-                    <form action="{{ url(route('tasks.store')) }}" method="POST" class="form-horizontal" >
+                    <form action="{{ url(route('tasks.update',['task'=>$task->id])) }}" method="POST" class="form-horizontal" >
                         {{ csrf_field() }}
 
                         <input type="hidden" name="id" value="{{$task->id}}">
