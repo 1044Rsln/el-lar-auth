@@ -44,11 +44,12 @@ class TaskController extends Controller {
     }
 
     function update(Task $task, Request $request) {
-        //var_dump($request);
+        
         $task = Task::find($request->id);
         $task->name = $request->name;
         $task->save();
         return redirect();
+        
     }
 
     function destroy($id) {

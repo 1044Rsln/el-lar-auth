@@ -25,5 +25,5 @@ Route::post('/tasks', 'TaskController@store')->name('tasks.store');
 Route::delete('/task/{task}', 'TaskController@destroy')->name('tasks.destroy');
 Route::get('/tasks/{task}/edit', 'TaskController@edit')->name('tasks.edit');
 Route::post('/tasks/{task}', 'TaskController@update')->name('tasks.update');
-//Route::resource('tasks','TaskController');
+Route::resource('tasks','TaskController');
 
